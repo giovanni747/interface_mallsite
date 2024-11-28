@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/javascript.js"></script>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+    <link rel="stylesheet"
+    href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"/>
+    <style>
+    @keyframes appear {
+        from {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        to {    
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .block {
+        opacity: 0; /* Start with hidden */
+        transform: scale(0.5); /* Small scale */
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .block.visible {
+        opacity: 1; /* Become visible */
+        transform: scale(1); /* Scale to normal */
+        animation: appear 0.5s linear;
+    }
+    .block.Sub {
+        background-color: #2270d6;
+        width: 30%;
+        height: 300px;
+        margin: 50px auto;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo"><i class="ri-store-3-fill"></i></i><span>JSM</span></a>
+        <ul class="navbar">
+            <li><a href="#" class="active">Home</a></li>
+            <% if (user && user.is_admin) { %>
+                <li><a href="#">Dashboard</a></li> 
+            <% } else { %>
+                <li><a href="#services">Services</a></li> 
+                <li><a href="#account">Account</a></li> 
+            <% } %>
+        </ul>
+        <div class="main">
+            <% if (user  && !user.is_admin) { %>
+                <span class="user"><i class="ri-user-4-line"></i><%= user.name %></span>
+                <a href="/logout" class="user"><i class="ri-logout-circle-r-line"></i>Logout</a>
+            <% }  else if (user && user.is_admin) { %>
+                <span class="user"><i class="ri-vip-crown-2-line"></i><%= user.name %></span>
+                <a href="/logout" class="user"><i class="ri-logout-circle-r-line"></i>Logout</a>
+            <% }  else { %>
+                <a href="/login" class="user"><i class="ri-user-4-line"></i>Log In</a>
+                <div class="registerBox"><a href="/register">Register</a></div>
+                <div class="bx bx-menu" id="menu-icon"></div>
+            <% } %>
+        </div>
+    </header>
+    <section class="banner">
+        <div class="left-column">
+            <!-- <h2>Welcome to</h1> -->
+            <h1>Jangs Shopping</h1>
+            <h1><span>Mall</span></h1>
+            <p>Step into a world of endless possibilities where shopping, dining, and entertainment blend seamlessly. From trendy fashion and must-have essentials to mouthwatering cuisine and exciting events, we offer something special for everyone to enjoy.</p>
+            <div class="shop-now-container">
+                <!-- <div class="shop-now-text">Shop Now</div> -->
+                <div class="main__action">
+                    <a class="main__scroll" href="">
+                      <div class="main__scroll-box">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M11.9997 13.1716L7.04996     8.22186L5.63574 9.63607L11.9997 16L18.3637 9.63607L16.9495 8.22186L11.9997 13.1716Z" fill="rgba(28,28,30,1)">
+                            </path>
+                        </svg>
+                      </div>
+                      <span class="main__scroll-text">Shop Now</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="right-column">
+            <div class="image-container2">
+                <img src="images/mall2.jpg" alt="mall side  view">
+            </div>
+            <div class="image-container1">
+                <img src="images/mallhome.jpg" alt="mall entrance">
+            </div>
+        </div>
+    </section>
+    <section class="view first-view">
+        <!-- <div class="block"></div> -->
+        <div class="headers">
+            <h1 id="first-view-h1">Find It. Love It.</h1>
+            <h2 id="first-view-h2">Discover fashion, delicious, beauty & fun.</h2>
+        </div>
+        <div class="block">
+            <div class="video-container">
+                <video src="images/christmasVibe.mp4" alt="mall1" autoplay loop muted>
+                    Your browser does not support the video tag.
+                </video>
+                <div class="text-overlay">
+                    <h2>Meet the JSM Mall</h2>
+                    <p>Your gift-getting, merry-making, <br>holiday happy place.</p>
+                </div>
+            </div>
+        </div>
+        <div class="block Sub"></div>
+        <div class="block Sub"></div>
+    </section>
+</body>
+</html> 

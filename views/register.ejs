@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <section class="register-container">
+        <div class="register-left-box">
+            <h2>Get Started Now</h2>
+            <h3>Enter your credentials to create your account</h3>
+            <form action="/register" method="POST">
+
+                <label for="name">Name / Username</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+
+                <div style="display: flex; gap: 14px; align-items: flex-start;">
+                    <div style="display: flex; flex-direction: column; flex: 1; max-width: 80px;">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" min="1" max="120" required>
+                    </div>
+                    <div style="display: flex; flex-direction: column; flex: 1; max-width: 140px;">
+                        <label for="gender">Gender</label>
+                        <input type="text" id="gender" name="gender" style="text-transform: lowercase;" required>
+                    </div>
+                </div>                
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" placeholder="ex. 2344 street, city, country" required>
+
+                <label for="phone_number">Phone number</label>
+                <input type="tel" id="phone_number" name="phone_number" placeholder="ex. 123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="12"required>
+
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email"  placeholder="ex. @gmail.com" required>
+
+                <button type="submit">Login</button>
+            </form>
+            <h3 class="option-text">Have an account? <a href="/login" style="color: var(--text-color);">Log in</a></h3>
+        </div>
+        <div class="register-right-box">
+            <div class="decoration-box show">
+                <img src="/images/entre.jpg" alt="register">
+                <div class="text-overlay">
+                    <h2>Welcome to our community</h2>
+                    <h3>Creating memories, inspiring moments—where your heart feels at home.</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html> 

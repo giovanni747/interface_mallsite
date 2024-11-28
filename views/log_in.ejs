@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <link rel="stylesheet" href="/log.css">
+    <style>
+        .error-message {
+            text-align: center;
+            animation: popIn 0.3s;
+            color: #f8fafc;
+            font-weight: 400;
+            padding: 13px;
+
+        }
+        .error-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;    
+            background-color: #be3131;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    
+        @keyframes popIn {
+            0% {
+                transform: scale(0);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <form action="/login" method="post">
+        <div class="login-container">
+            <div class="login-box">
+                <header>Login</header>
+            </div>
+            <% if (typeof error !== 'undefined') { %>
+                <div class="error-container">
+                    <div class="error-message">
+                        <%= error %>
+                    </div>
+                </div>
+            <% } %>
+            <div class="input-box">
+                <input type="text" class="input-field"  name="name" placeholder="username" autocomplete="off" required>
+            </div>
+            <div class="input-box">
+                <input type="password" class="input-field" name="password" placeholder="password" autocomplete="off" required>
+            </div>
+            <div class="input-submit">
+                <input type="submit" class="submit-btn" value="Sign in">
+            </div>
+            <div class="signup-text">
+                <p>Don't have an account? <a href="/register">Sign Up</a></p>
+            </div>
+        </div>
+    </form>
+    
+</body>
+</html>
