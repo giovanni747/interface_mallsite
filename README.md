@@ -5,8 +5,7 @@
 
 ## Video Example
 <video controls width="600">
-    <source src="path/to/your/video.mp4" type="video/mp4">
-    Your browser does not support the video tag.
+https://github.com/user-attachments/assets/628db30a-52e3-4b5a-955c-ab33ccc04cd9
 </video>
 
 *Description: Click play to watch the video.*
