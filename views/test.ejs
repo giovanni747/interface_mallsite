@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JSM Mall</title>
     <script src="/javascript.js"></script>
     <link rel="stylesheet" href="/style.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
     rel="stylesheet"/>
     <link rel="stylesheet"
     href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"/>
+    <link rel="stylesheet" href="/dashboard.css">  
     <style>
     @keyframes appear {
         from {
@@ -45,21 +46,21 @@
     <header>
         <a href="#" class="logo"><i class="ri-store-3-fill"></i></i><span>JSM</span></a>
         <ul class="navbar">
-            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#" data-page="/" class="active">Home</a></li>
             <% if (user && user.is_admin) { %>
-                <li><a href="#">Dashboard</a></li> 
+                <li><a href="#" data-page="dashboard">Dashboard</a></li>
             <% } else { %>
-                <li><a href="#services">Services</a></li> 
-                <li><a href="#account">Account</a></li> 
+                <li><a href="#" >Hours</a></li> 
+                <li><a href="#" >Account</a></li> 
             <% } %>
         </ul>
         <div class="main">
             <% if (user  && !user.is_admin) { %>
                 <span class="user"><i class="ri-user-4-line"></i><%= user.name %></span>
-                <a href="/logout" class="user"><i class="ri-logout-circle-r-line"></i>Logout</a>
+                <div class="bx bx-menu" id="menu-icon"></div>
             <% }  else if (user && user.is_admin) { %>
                 <span class="user"><i class="ri-vip-crown-2-line"></i><%= user.name %></span>
-                <a href="/logout" class="user"><i class="ri-logout-circle-r-line"></i>Logout</a>
+                <div class="bx bx-menu" id="menu-icon"></div>
             <% }  else { %>
                 <a href="/login" class="user"><i class="ri-user-4-line"></i>Log In</a>
                 <div class="registerBox"><a href="/register">Register</a></div>
@@ -67,56 +68,254 @@
             <% } %>
         </div>
     </header>
-    <section class="banner">
-        <div class="left-column">
-            <!-- <h2>Welcome to</h1> -->
-            <h1>Jangs Shopping</h1>
-            <h1><span>Mall</span></h1>
-            <p>Step into a world of endless possibilities where shopping, dining, and entertainment blend seamlessly. From trendy fashion and must-have essentials to mouthwatering cuisine and exciting events, we offer something special for everyone to enjoy.</p>
-            <div class="shop-now-container">
-                <!-- <div class="shop-now-text">Shop Now</div> -->
-                <div class="main__action">
-                    <a class="main__scroll" href="">
-                      <div class="main__scroll-box">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M11.9997 13.1716L7.04996     8.22186L5.63574 9.63607L11.9997 16L18.3637 9.63607L16.9495 8.22186L11.9997 13.1716Z" fill="rgba(28,28,30,1)">
-                            </path>
-                        </svg>
-                      </div>
-                      <span class="main__scroll-text">Shop Now</span>
-                    </a>
+    <section id="content">
+        <section class="banner">
+            <div class="left-column">
+                <!-- <h2>Welcome to</h1> -->
+                <h1>Jangs Shopping</h1>
+                <h1><span>Mall</span></h1>
+                <p>Step into a world of endless possibilities where shopping, dining, and entertainment blend seamlessly. From trendy fashion and must-have essentials to mouthwatering cuisine and exciting events, we offer something special for everyone to enjoy.</p>
+                <div class="shop-now-container">
+                    <!-- <div class="shop-now-text">Shop Now</div> -->
+                    <div class="main__action">
+                        <a class="main__scroll" href="">
+                        <div class="main__scroll-box">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M11.9997 13.1716L7.04996     8.22186L5.63574 9.63607L11.9997 16L18.3637 9.63607L16.9495 8.22186L11.9997 13.1716Z" fill="rgba(28,28,30,1)">
+                                </path>
+                            </svg>
+                        </div>
+                        <span class="main__scroll-text">Shop Now</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="right-column">
-            <div class="image-container2">
-                <img src="images/mall2.jpg" alt="mall side  view">
+            <div class="right-column">
+                <div class="image-container2">
+                    <img src="images/mall2.jpg" alt="mall side  view">
+                </div>
+                <div class="image-container1">
+                    <img src="images/mallhome.jpg" alt="mall entrance">
+                </div>
             </div>
-            <div class="image-container1">
-                <img src="images/mallhome.jpg" alt="mall entrance">
+        </section>
+        <section class="view first-view">
+            <!-- <div class="block"></div> -->
+            <div class="headers">
+                <h1 id="first-view-h1">Find It. Love It.</h1>
+                <h2 id="first-view-h2" style="font-weight: 500; font-size: 1.2rem; color: var(--text-color)">Discover fashion, delicious, beauty & fun.</h2>
             </div>
-        </div>
-    </section>
-    <section class="view first-view">
-        <!-- <div class="block"></div> -->
-        <div class="headers">
-            <h1 id="first-view-h1">Find It. Love It.</h1>
-            <h2 id="first-view-h2">Discover fashion, delicious, beauty & fun.</h2>
-        </div>
-        <div class="block">
-            <div class="video-container">
-                <video src="images/christmasVibe.mp4" alt="mall1" autoplay loop muted>
-                    Your browser does not support the video tag.
-                </video>
+            <div class="block">
+                <div class="video-container">
+                    <video src="images/christmasVibe.mp4" alt="mall1" autoplay loop muted>
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="text-overlay">
+                        <h2>Meet the JSM Mall</h2>
+                        <p>Your gift-getting, merry-making, <br>holiday happy place.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="block Sub">
+                <img src="images/mallpic1.jpg" alt="services">
                 <div class="text-overlay">
-                    <h2>Meet the JSM Mall</h2>
-                    <p>Your gift-getting, merry-making, <br>holiday happy place.</p>
+                    <h1>American Eagle</h1>
+                    <p>The coziest sweaters, on-trend jeans & more gift ideas</p>
+                </div>
+            </div>
+            <div class="block Sub">
+                <img src="images/mallpic2.jpg" alt="services">
+                <div class="text-overlay">
+                    <h1>FIND IT @THEMALL</h1>
+                    <p>Discover outerwear you need this season</p>
+                </div>
+            </div>
+        </section>
+        <section class="stores-slider">
+            <div class="slider-header">
+                <h1>Our Stores</h1>
+                <p>Discover your favorite brands</p>
+            </div>
+            <div class="slider-container">
+                <button class="slider-button prev">
+                    <i class="ri-arrow-left-s-line"></i>
+                </button>
+                <div class="stores-wrapper">
+                    <div class="stores-track">
+                        <div class="store-card">
+                            <img src="images/converse.svg" alt="Store 1">
+                            <div class="store-info">
+                                <h3>Converse</h3>
+                                <p>Footwear & Apparel</p>  
+                            </div>
+                        </div>
+                        <div class="store-card">
+                            <img src="images/H&M.svg" alt="Store 1">
+                            <div class="store-info">
+                                <h3>H&M</h3>
+                                <p>Fashion & Apparel</p>
+                            </div>
+                        </div>
+                        <div class="store-card">
+                            <img src="images/Nike.svg" alt="Store 1">
+                            <div class="store-info">
+                                <h3>Nike</h3>
+                                <p>Sports & Lifestyle</p>
+                            </div>
+                        </div>
+                        <div class="store-card">
+                            <img src="images/zara.svg" alt="Store 2">
+                            <div class="store-info">
+                                <h3>Zara</h3>
+                                <p>Fashion & Apparel</p>
+                            </div>
+                        </div>
+                        <div class="store-card">
+                            <img src="images/nb.svg" alt="Store 2">
+                            <div class="store-info">
+                                <h3>New Balance</h3>
+                                <p>Footwear & Apparel</p>
+                            </div>
+                        </div>
+                        <div class="store-card">
+                            <img src="images/Asics.svg" alt="Store 2">
+                            <div class="store-info">
+                                <h3>Asics</h3>
+                                <p>Footwear & Apparel</p>
+                            </div>
+                        </div>
+                        <div class="store-card">
+                            <img src="images/Under_Armour.svg" alt="Store 2">
+                            <div class="store-info">
+                                <h3>Under Armour</h3>
+                                <p>Footwear & Sportswear</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="slider-button next">
+                    <i class="ri-arrow-right-s-line"></i>
+                </button>
+            </div>
+            <section class="dual-container">
+                <div class="block-container">
+                    <div class="block">
+                        <div class="block-image">
+                            <img src="/images/server.jpg" alt="Mall Image 1">
+                        </div>
+                        <div class="block-content">
+                            <h1>Service Center</h1>
+                            <p>Premium service for all your needs</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="block-container">
+                    <div class="block">
+                        <div class="block-image">
+                            <img src="/images/mallfood.jpg" alt="Mall Image 2">
+                        </div>
+                        <div class="block-content">
+                            <h1>Grub Co.</h1>
+                            <p>Enjoy decadent flavors and perfect bites!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section class="deals-container">
+            <div class="deals-header">
+                <h1>Featured Deals</h1>
+            </div>
+            <div>
+                <div class="block-container">
+                    <div class="block">
+                        <div class="block-image">
+                            <img src="/images/ad1.webp" alt="Mall Image 1">
+                        </div>
+                        <div class="block-content">
+                            <h1>Nike</h1>
+                            <p>EXTRA 20% OFF <br>Use Code: JSM20</p>
+                        </div>
+                        <div class="tag">
+                            <p>Deals</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="block-container">
+                    <div class="block">
+                        <div class="block-image">
+                            <img src="/images/ad2.jpg" alt="Mall Image 2">
+                        </div>
+                        <div class="block-content">
+                            <h1>New Balance</h1>
+                            <p>Up to 70% OFF <br>+ Extra 20% OFF</p>
+                        </div>
+                        <div class="tag">
+                            <p>Deals</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="block-container">
+                    
+                    <div class="block">
+                        <div class="block-image">
+                            <img src="/images/ad3.jpg" alt="Mall Image 2">
+                        </div>
+                        <div class="block-content">
+                            <h1>Vans</h1>
+                            <p>Extra 40% OFF<br>+ Deals Starting at $24.99</p>
+                        </div>
+                        <div class="tag">
+                            <p>Deals</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About JSM Mall</h3>
+                <p>Your premier shopping destination featuring the best brands, dining, and entertainment.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Stores Directory</a></li>
+                    <li><a href="#">Mall Map</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <% if (user && !user.is_admin) { %>
+                        <li><a href="/logout" class="user"><i class="ri-logout-circle-r-line"></i>Logout</a></li>
+                    <% } %>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="ri-map-pin-line"></i> 123 Shopping Avenue</li>
+                    <li><i class="ri-phone-line"></i> (555) 123-4567</li>
+                    <li><i class="ri-mail-line"></i> info@jsmmall.com</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="ri-facebook-fill"></i></a>
+                    <a href="#"><i class="ri-instagram-line"></i></a>
+                    <a href="#"><i class="ri-twitter-fill"></i></a>
+                    <a href="#"><i class="ri-linkedin-fill"></i></a>
                 </div>
             </div>
         </div>
-        <div class="block Sub"></div>
-        <div class="block Sub"></div>
-    </section>
+        <div class="footer-bottom">
+            <p>&copy; 2024 JSM Mall. All rights reserved.</p>
+        </div>
+    </footer>
+    <div class="scroll-top" id="scrollTop">
+        <i class="ri-arrow-up-line"></i>
+    </div>
 </body>
 </html> 

@@ -14,6 +14,18 @@ export async function getMembers(){
     const [rows] = await pool.query("SELECT * FROM members") 
     return rows
 }
+export async function allCount(){
+    const [result] = await pool.query(`
+        SELECT COUNT(*) as count 
+        FROM members 
+        WHERE is_admin = 0
+    `);
+    return result[0].count;
+} 
+export async function allAdmin(){
+    const [rows] = await pool.query("SELECT COUNT(*) as total FROM members WHERE is_admin = 1") 
+    return rows[0].total;
+} 
 
 export async function getMember(name, password) {
     const [rows] = await pool.query(`
@@ -50,5 +62,31 @@ export async function deleteMember(id){
     WHERE id = ?
     `,[id])
     return res
+}
+export async function updateMember(id, data) {
+    // Get current user data
+    const [currentUser] = await pool.query('SELECT * FROM members WHERE id = ?', [id]);
+    if (!currentUser || currentUser.length === 0) {
+        throw new Error('User not found');
+    }
+
+    // Merge existing data with updates
+    const updatedData = {
+        name: data.name || currentUser[0].name,
+        email: data.email || currentUser[0].email,
+        age: data.age || currentUser[0].age,
+        gender: data.gender || currentUser[0].gender,
+        address: data.address || currentUser[0].address,
+        phone_number: data.phone_number || currentUser[0].phone_number
+    };
+
+    const [result] = await pool.query(`
+        UPDATE members 
+        SET name = ?, email = ?, age = ?, gender = ?, address = ?, phone_number = ?
+        WHERE id = ?
+    `, [updatedData.name, updatedData.email, updatedData.age, updatedData.gender, 
+        updatedData.address, updatedData.phone_number, id]);
+    
+    return result;
 }
 

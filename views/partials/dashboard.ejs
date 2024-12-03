@@ -1,0 +1,114 @@
+<section class="dashboard" id="content">
+    <div class="search-overlay" id="searchOverlay"></div>
+    <section class="dashboard-header">
+        <div class="dashboard-header-left">
+            <h2>Welcome, <%= user.name %></h2>
+            <p>Your personal dashboard overview</p>
+        </div>
+        <div class="dashboard-header-right">
+            <div class="search-box">
+                <i class="ri-search-2-line"></i>
+                <input type="text" id="searchInput" placeholder="Search...">
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </section>
+    <section class="dashboard-content">
+        <div class="dashboard-content-left">
+            <div class="admin-card">
+                <h2>Profile</h2>
+                <div class="profile-card-content">
+                    <div class="pic">
+                        <img src="/images/user2.webp" alt="profile">
+                    </div>
+                </div>
+                <!-- <div class="modifPic"> 
+                    <i class="ri-user-smile-line"></i>
+                 </div> -->
+                    <div class="info">
+                        <h2><%= user.name %></h2>
+                    <p><%= user.email %></p>
+                </div>
+                <div class="admin-card-footer">
+                    <div class="admin-card-footer-left">
+                        <div class="container-amount">
+                            <i class="ri-user-smile-line"></i>
+                            <p><%= allCount() %></p>
+                        </div>
+                    </div>
+                    <div class="admin-card-footer-right">
+                        <div class="container-amount">
+                            <i class="ri-vip-crown-line"></i>
+                            <p><%= allAdmin() %></p>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="admin-logout-container">
+                <a href="/logout" class="user"><i class="ri-logout-circle-r-line"></i>Logout</a>
+            </div>
+        </div>
+        <div class="dashboard-content-right">
+            <div class="bar">
+                <h2>Dashboard</h2>
+            </div>
+            <div class="table-container">
+                <div class="table-header">
+                    <h3>All Users</h3>
+                </div>
+    
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Address</th>
+                            <th>Phone Number</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% users.forEach(user => { %>
+                            <% if(user.is_admin === 0) { %>
+                            <tr>
+                                <td title="<%= user.name %>"><%= user.name %></td>
+                                <td title="<%= user.email %>"><%= user.email %></td>
+                                <td><%= user.age %></td>
+                                <td><%= user.gender %></td>
+                                <td title="<%= user.address %>"><%= user.address %></td>
+                                <td title="<%= user.phone_number %>"><%= user.phone_number %></td>
+                                <td class="actions">
+                                    <button class="edit-btn" data-id="<%= user.id %>">Edit</button>
+                                    <button class="delete-btn" data-id="<%= user.id %>">Delete</button>
+                                </td>
+                             </tr>
+                            <% } %>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <div class="popup" id="notification"></div>
+    <!-- fields of change -->
+    <div class="edit-modal" id="editModal">
+        <div class="edit-modal-content">
+            <h3>Edit User</h3>
+            <input type="text" id="editName" placeholder="Name">
+            <input type="email" id="editEmail" placeholder="Email">
+            <input type="number" id="editAge" placeholder="Age">
+            <input type="text" id="editGender" placeholder="Gender">
+            <input type="text" id="editAddress" placeholder="Address">
+            <input type="tel" id="editPhone" placeholder="Phone Number">
+            <div class="edit-modal-buttons">
+                <button class="cancel" onclick="closeEditModal()">Cancel</button>
+                <button class="save" onclick="saveChanges()">Save</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
