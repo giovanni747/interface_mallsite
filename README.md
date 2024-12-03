@@ -4,10 +4,7 @@
 *Description: This is an example image description.*
 
 ## Video Example
-<video controls width="600">
-    <source src="https://github.com/user-attachments/assets/628db30a-52e3-4b5a-955c-ab33ccc04cd9" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+[![Watch the video](https://img.youtube.com/vi/KXRWE_4fH4k/0.jpg)](https://youtu.be/KXRWE_4fH4k)
 
-*Description: Click play to watch the video.*
+*Description: Click the image to watch the video.*
 
