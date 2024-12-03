@@ -5,6 +5,11 @@
 
 *Description: Click the video to watch the video showcasing the Mall UI application.*
 
+### Overall WEB Application
+[![Watch the video](https://img.youtube.com/vi/5YHZfHEAbLc/0.jpg)](https://youtu.be/5YHZfHEAbLc)
+
+*Description: Click the video to view more.*
+
 ### Application Description
 This application, **Mall UI**, was created using the **Express framework**, **CSS**, **HTML**, and **JavaScript**. It demonstrates a simple and intuitive user interface for a mall-themed web application, featuring dynamic functionality powered by Express and styled with CSS.
 
@@ -19,11 +24,6 @@ This application, **Mall UI**, was created using the **Express framework**, **CS
 
 *Description: This is an example of the dashboard that has CRUD functionalities* 
 
-
-### Overall WEB Application
-[![Watch the video](https://img.youtube.com/vi/5YHZfHEAbLc/0.jpg)](https://youtu.be/5YHZfHEAbLc)
-
-*Description: Click the video to view more.*
 
 
 
